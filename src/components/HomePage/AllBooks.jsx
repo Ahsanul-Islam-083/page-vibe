@@ -6,7 +6,7 @@ const booksPromise = fetch('/booksData.json').then(res => res.json());
 const AllBooks = () => {
 
     const books = use(booksPromise);
-    console.log("boks: ", books);
+    console.log("books: ", books);
     return (
         <div className='container mx-auto my-12'>
             <h2 className='font-bold text-3xl text-center mb-6'>Books</h2>

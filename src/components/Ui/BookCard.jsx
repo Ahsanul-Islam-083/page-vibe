@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaRegStar } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const BookCard = ({book}) => {
     return (
-        <div className="card bg-base-100 shadow-sm transition hover:scale-105">
-            <figure className='m-4 rounded-2xl p-6 bg-base-300'>
+        <Link to={`/bookDetails/${book.bookId}`} className="card bg-base-100 shadow-sm transition hover:scale-105 group hover:no-underline focus:no-underline">
+            <figure className='m-4 rounded-2xl p-6 bg-base-200'>
                 <img className='rounded-xl h-62.5'
                     src={book.image}
                     alt={book.bookName} />
@@ -14,7 +15,7 @@ const BookCard = ({book}) => {
                     {book.tags.map((tag,i) => <div key={i} className="badge badge-soft badge-success font-bold">{tag}</div>)
                     }
                 </div>
-                <h2 className="card-title text-2xl">
+                <h2 className="card-title text-2xl group-hover:underline group-focus:underline">
                     {book.bookName}
                 </h2>
                 <p className='font-semibold text-lg text-gray-500'>By: {book.author}</p>
@@ -23,7 +24,7 @@ const BookCard = ({book}) => {
                     <div className=" flex gap-2 items-center">{book.rating} <FaRegStar /> </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
