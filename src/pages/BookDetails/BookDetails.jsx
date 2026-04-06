@@ -1,5 +1,7 @@
 // import React, { use } from 'react';
+import { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../context/BookContext';
 
 const BookDetails = () => {
     // const booksPromise = fetch('/booksData.json').then(res => res.json());
@@ -16,9 +18,10 @@ const BookDetails = () => {
     // const expectedBook = books.find (book => book.bookId === bookId)(opt.2)
 
     const expectedBook = books.find(book => book.bookId === Number(id)) //(opt.3)
-    console.log(expectedBook);
+    // console.log(expectedBook);
 
     const {
+        bookId,
         bookName,
         author,
         image,
@@ -31,12 +34,14 @@ const BookDetails = () => {
         yearOfPublishing,
     } = expectedBook;
 
+    const {handleMarkAsRead, handleWishList} = useContext(BookContext)
+    
 
     return (
         <div className='container mx-auto py-12'>
             <div className="card lg:card-side bg-base-100 shadow-sm">
                 <figure className='flex-1 bg-base-200 rounded-2xl m-4'>
-                    <img className='h-52 w-40 object-contain p-2'
+                    <img className='h-52 w-40 md:h-112 md:w-94 object-contain p-2'
                         src={image}
                         alt="Album" />
                 </figure>
@@ -93,8 +98,8 @@ const BookDetails = () => {
                             </table>
                         </div>
                         <div className='flex gap-3'>
-                            <button className="btn">Listen</button>
-                            <button className="btn btn-info text-white">Listen</button>
+                            <button onClick={()=>{handleMarkAsRead(expectedBook)}} className="btn">Mark as Read</button>
+                            <button onClick={()=>handleWishList(expectedBook)} className="btn btn-info text-white">Add to Wishlist</button>
                         </div>
                     </div>
                 </div>
