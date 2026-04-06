@@ -24,7 +24,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="font-bold text-xl">Page Vibe</a>
+                    <a className="font-bold md:text-xl">Page Vibe</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -32,8 +32,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-0.5 md:gap-4">
-                    <button className="btn btn-success text-white">Sign In</button>
-                    <button className="btn btn-accent text-white">Sign Up</button>
+                    <button className="btn btn-sm md:btn-md btn-success text-white">Sign In</button>
+                    <button className="btn btn-sm md:btn-md btn-accent text-white">Sign Up</button>
                 </div>
             </div>
         </div>
