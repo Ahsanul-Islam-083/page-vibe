@@ -2,25 +2,35 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BookContext } from '../../context/BookContext';
 import BookCard from '../Ui/BookCard';
 
-const ListedWishList = ({sortingType}) => {
+const ListedWishList = ({ sortingType }) => {
     const { wishlist } = useContext(BookContext);
 
 
-    const [filteredWishList, setFilteredWishList] = useState(wishlist)
+    // const [filteredWishList, setFilteredWishList] = useState(wishlist)
 
-    useEffect(() => {
-        if (sortingType) {
-            if (sortingType === 'pages') {
-                const sortedData = [...wishlist].sort((a, b) => a.totalPages - b.totalPages)
-                console.log(sortedData);
-                setFilteredWishList(sortedData);
-            } else if (sortingType === 'rating') {
-                const sortedData = [...wishlist].sort((a, b) => a.rating - b.rating)
-                console.log(sortedData);
-                setFilteredWishList(sortedData);
-            }
-        }
-    }, [sortingType, wishlist])
+    // useEffect(() => {
+    //     if (sortingType) {
+    //         if (sortingType === 'pages') {
+    //             const sortedData = [...wishlist].sort((a, b) => a.totalPages - b.totalPages)
+    //             console.log(sortedData);
+    //             setFilteredWishList(sortedData);
+    //         } else if (sortingType === 'rating') {
+    //             const sortedData = [...wishlist].sort((a, b) => a.rating - b.rating)
+    //             console.log(sortedData);
+    //             setFilteredWishList(sortedData);
+    //         }
+    //     }
+    // }, [sortingType, wishlist])
+
+    // ------this if-else or conditional statement is good in this case
+
+    let filteredWishList = wishlist;
+
+    if (sortingType === 'pages') {
+        filteredWishList = [...wishlist].sort((a, b) => a.totalPages - b.totalPages);
+    } else if (sortingType === 'rating') {
+        filteredWishList = [...wishlist].sort((a, b) => a.rating - b.rating);
+    }
 
     if (filteredWishList.length === 0) {
         return (

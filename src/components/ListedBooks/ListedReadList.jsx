@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+// import React, { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { BookContext } from '../../context/BookContext';
 import BookCard from '../Ui/BookCard';
 
@@ -6,21 +7,27 @@ const ListedReadList = ({ sortingType }) => {
 
     const { readList } = useContext(BookContext);
 
-    const [filteredReadList, setFilteredReadList] = useState(readList)
+    // const [filteredReadList, setFilteredReadList] = useState(readList)
 
-    useEffect(() => {
-        if (sortingType) {
-            if (sortingType === 'pages') {
-                const sortedData = [...readList].sort((a, b) => a.totalPages - b.totalPages)
-                console.log(sortedData);
-                setFilteredReadList(sortedData);
-            } else if (sortingType === 'rating') {
-                const sortedData = [...readList].sort((a, b) => a.rating - b.rating)
-                console.log(sortedData);
-                setFilteredReadList(sortedData);
-            }
-        }
-    }, [sortingType, readList])
+    // useEffect(() => {
+    //     if (sortingType) {
+    //         if (sortingType === 'pages') {
+    //             const sortedData = [...readList].sort((a, b) => a.totalPages - b.totalPages)
+    //             console.log(sortedData);
+    //             setFilteredReadList(sortedData);
+    //         } else if (sortingType === 'rating') {
+    //             const sortedData = [...readList].sort((a, b) => a.rating - b.rating)
+    //             console.log(sortedData);
+    //             setFilteredReadList(sortedData);
+    //         }
+    //     }
+    // }, [sortingType, readList])
+// ----------this bellow is better in this case
+    const filteredReadList = sortingType === 'pages'
+    ? [...readList].sort((a, b) => a.totalPages - b.totalPages)
+    : sortingType === 'rating'
+    ? [...readList].sort((a, b) => a.rating - b.rating)
+    : readList;
 
     if (filteredReadList.length === 0) {
         return (
