@@ -1,16 +1,70 @@
-# React + Vite
+# 📚 Page Vibe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean and simple book tracking app where you can browse books, mark what you've read, and save what you want to read next. Everything stays saved even after you close the tab — no account needed.
 
-Currently, two official plugins are available:
+🌐 **Live Site:** [page-vibe.netlify.app](https://page-vibe.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## What it does
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Browse a collection of popular books
+- Add books to your **Read List** or **Wish List**
+- Sort your lists by pages or rating
+- Get instant toast notifications on actions
+- All data saved to localStorage — no backend needed
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Built with
+
+- **React 18** + **Vite**
+- **Tailwind CSS** + **DaisyUI**
+- **React Router** for navigation
+- **Context API** for global state
+- **React Toastify** for notifications
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── HomePage/        # Banner & book grid
+│   ├── ListedBooks/     # Read & Wish list views
+│   └── Shared/          # Navbar, Footer, BookCard
+├── context/             # BookContext + BookProvider
+├── pages/               # Homepage, Books, BookDetails, ErrorPage
+├── routes/              # App routes
+└── utils/
+    └── localDB.js       # localStorage helpers
+```
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/your-username/page-vibe.git
+cd page-vibe
+npm install
+npm run dev
+```
+
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## Routes
+
+| Path | Page |
+|---|---|
+| `/` | Homepage |
+| `/books` | Read & Wish lists |
+| `/books/:id` | Book details |
+| `*` | 404 page |
+
+---
+
+> Made with ❤️ using React + Vite
